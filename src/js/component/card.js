@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
+  const { store, actions } = useContext(Context)
   return (
     <div className="container mt-5">
       <div className="card" style={{ width: "18rem" }}>
@@ -16,7 +18,7 @@ const Card = (props) => {
               <Link to={`/characters/${props.item_id}`} className="btn btn-primary">Learn More</Link>
             </div>
             <div className="col-6">
-              <button className="btn btn-warning"><i className="bi bi-heart "></i></button>
+              <button className="btn btn-warning"><i className="bi bi-heart " onClick={() => { actions.guardarFavorito(props.name) }}></i></button>
             </div>
           </div>
         </div>

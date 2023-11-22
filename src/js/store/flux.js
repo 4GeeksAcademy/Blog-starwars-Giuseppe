@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			planets: [],
+			favorites: [],
 			urlBase: "https://www.swapi.tech/api",
 			demo: [
 				{
@@ -78,7 +79,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}).catch((err) => {
 						console.log(err)
 					})
+			},
+			guardarFavorito(nombreItem) {
+				const store = getStore();
+				const favorito = store.favorites
+				const newFavorite = [...favorito, { name: nombreItem, id: favorito.length }]
+				setStore({ favorites: newFavorite })
+			},
+			eliminarFavoritos(id) {
+				const store = getStore();
+				const favorito = store.favorites
+				const favoritoActualizado = favorito.filter((item) => item.id !== id);
+				setStore({ favorites: favoritoActualizado })
 			}
+
 		}
 	};
 };
