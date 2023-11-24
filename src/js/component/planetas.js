@@ -15,7 +15,7 @@ const Planetas = (props) => {
                     <p className="card-text">{props.terrain}</p>
                     <div className="row">
                         <div className="col-6">
-                            <Link to={`/planets/${props._id}`} className="btn btn-primary">Learn More</Link>
+                            <Link to={`/planets/${props._id}`} state={props} className="btn btn-primary">Learn More</Link>
                         </div>
                         <div className="col-6">
                             <button className="btn btn-warning" onClick={() => { actions.addFavorite(props.name) }}><i className="bi bi-heart"></i></button>
@@ -28,4 +28,3 @@ const Planetas = (props) => {
 };
 
 export default Planetas;
- 
