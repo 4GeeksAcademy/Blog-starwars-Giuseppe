@@ -1,6 +1,9 @@
-import React from "react"
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
+  const { store, actions } = useContext(Context)
   return (
     <div className="container mt-5">
       <div className="card" style={{ width: "18rem" }}>
@@ -12,15 +15,15 @@ const Card = (props) => {
           <p className="card-text">{props.eye_color}</p>
           <div className="row">
             <div className="col-6">
-              <button className="btn btn-primary">Learn More</button>
+              <Link to={`/characters/${props._id}`} state={props} className="btn btn-primary">Learn More</Link>
             </div>
             <div className="col-6">
-              <button className="btn btn-warning"><i className="bi bi-heart "></i></button>
+              <button className="btn btn-warning" onClick={() => { actions.addFavorite(props.name) }}><i className="bi bi-heart "></i></button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
